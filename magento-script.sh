@@ -15,7 +15,7 @@ add-apt-repository -y ppa:ondrej/php
 wait
 apt-get -y update
 apt-get -y install nginx
-apt-get -y install php7.0 php7.0-fpm php7.0-mysql php7.0-zip php7.0-gd php-xml
+apt-get -y install php7.0 php7.0-fpm php7.0-mysql php7.0-zip php7.0-gd php-xml  php7.0-mcrypt
 wait
 #take mysql root pass
 
