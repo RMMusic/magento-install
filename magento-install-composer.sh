@@ -5,3 +5,6 @@ php composer-setup.php --install-dir=/home/
 php -r "unlink('composer-setup.php');"
 wait
 cp auth.json /home/administrator/.composer/
+wait
+cd /home/
+php composer.phar create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $homedir/html
