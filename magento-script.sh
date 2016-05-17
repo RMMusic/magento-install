@@ -21,8 +21,8 @@ wait
 echo "Please enter mysql root pass: "
 read MYSQL_ROOT_PASS
 apt-get -y install debconf-utils
-debconf-set-selections <<< 'mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS'
-debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS'
+debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS"
 
 apt-get -y install  mysql-server-5.6
 
