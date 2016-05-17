@@ -15,4 +15,4 @@ echo "
     }
 }
 
-" > /home/$USER/.composer/auth.json
+" > /home/.composer/auth.json
