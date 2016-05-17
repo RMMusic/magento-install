@@ -14,7 +14,7 @@ echo "domain:"$2
 add-apt-repository -y ppa:ondrej/php
 apt-get -y update
 apt-get -y install nginx
-apt-get -y install php7.0-fpm php7.0-mysql php7.0-zip php7.0-gd
+apt-get -y install php7.0 php7.0-fpm php7.0-mysql php7.0-zip php7.0-gd
 wait
 #take mysql root pass
 

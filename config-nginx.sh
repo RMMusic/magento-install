@@ -28,4 +28,3 @@ server {
 ln -sf /etc/nginx/sites-available/$domainname -T /etc/nginx/sites-enabled/$domainname
 
 rm -f /etc/nginx/sites-enabled/default
-    ngx_reload
