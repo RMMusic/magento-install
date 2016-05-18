@@ -21,7 +21,7 @@ wait
 
 #echo "Please enter mysql root pass: "
 #read MYSQL_ROOT_PASS
-MYSQL_ROOT_PASS=admin1234
+export MYSQL_ROOT_PASS=admin123
 apt-get -y install debconf-utils
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS"
