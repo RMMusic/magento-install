@@ -7,4 +7,4 @@ wait
 cp auth.json /home/administrator/.composer/
 wait
 cd /home/
-php composer.phar create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $homedir/html
+php composer.phar create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $homedir$domainname/html
