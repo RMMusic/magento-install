@@ -19,15 +19,18 @@ apt-get -y install php7.0 php7.0-soap php7.0-fpm php7.0-mysql php7.0-zip php7.0-
 wait
 #take mysql root pass
 
-echo "Please enter mysql root pass: "
-read MYSQL_ROOT_PASS
+#echo "Please enter mysql root pass: "
+#read MYSQL_ROOT_PASS
+MYSQL_ROOT_PASS=admin1234
 apt-get -y install debconf-utils
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS"
-
 apt-get -y install  mysql-server-5.6
 
 /bin/bash config-nginx.sh
+wait
 /bin/bash magento-install-composer.sh
+wait
+/bin/bash create-db.sh
 wait
 /bin/bash install-magento.sh
