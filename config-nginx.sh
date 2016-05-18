@@ -1,16 +1,15 @@
 ﻿#!/bin/bash
-sudo mkdir -p $homedir$domainname/html
-sudo chown -R $USER:$USER $homedir$domainname/html
+sudo mkdir -p $homedir$domainname
+sudo chown -R $USER:$USER $homedir$domainname
 sudo chmod -R 755 /var/www
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainname
-
 echo "
 server {
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
 
-        root $homedir$domainname/html;
-        index index.html index.htm;
+        root $homedir$domainname;
+        index index.php index.html index.htm;
 
         server_name $domainname www.$domainname;
 
