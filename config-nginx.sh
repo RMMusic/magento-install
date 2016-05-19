@@ -8,14 +8,21 @@ server {
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
 
-        root $homedir$domainname;
-        index index.php index.html index.htm;
+        root $homedir$domainname/pub;
+        index.php;
+		autoindex off;
+		charset off;
 
         server_name $domainname www.$domainname;
 
         location / {
-           try_files $uri $uri/ =404;
-        }
+		try_files $uri $uri/ /index.php?$args;
+		}
+		
+		# deny everything but index.php
+		location ~ ^/update/(?!pub/). {
+		deny all;
+		}
 }
 
 " > /etc/nginx/sites-available/$domainname
