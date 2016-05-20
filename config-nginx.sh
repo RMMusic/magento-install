@@ -2,6 +2,7 @@
 sudo mkdir -p $homedir$domainname
 sudo chown -R $USER:$USER $homedir$domainname
 sudo chmod -R 755 /var/www
+sudo echo "10.1.1.210	$domainname" >> /etc/hosts
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainname
 echo "
 server {
@@ -9,7 +10,7 @@ server {
         listen [::]:80 default_server ipv6only=on;
 
         root $homedir$domainname;
-        index.php;
+        index index.php;
 		autoindex off;
 		charset off;
 
@@ -31,5 +32,6 @@ ln -sf /etc/nginx/sites-available/$domainname -T /etc/nginx/sites-enabled/$domai
 
 rm -f /etc/nginx/sites-enabled/default
 
-sudo /etc/init.d/nginx restart
-#start/stop
+sudo /etc/init.d/nginx stop
+wait
+sudo /etc/init.d/nginx start
