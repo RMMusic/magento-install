@@ -8,7 +8,7 @@ server {
         listen 80 default_server;
         listen [::]:80 default_server ipv6only=on;
 
-        root $homedir$domainname/pub;
+        root $homedir$domainname;
         index.php;
 		autoindex off;
 		charset off;
@@ -32,3 +32,4 @@ ln -sf /etc/nginx/sites-available/$domainname -T /etc/nginx/sites-enabled/$domai
 rm -f /etc/nginx/sites-enabled/default
 
 sudo /etc/init.d/nginx restart
+#start/stop
