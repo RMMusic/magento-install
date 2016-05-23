@@ -1,6 +1,8 @@
 ﻿#!/bin/bash
 export homedir=$1
 export domainname=$2
+export MAGE_ROOT=$homedir$domainname;
+export MAGE_MODE=default;
 echo "our home dir:"$1
 echo "domain:"$2
 #export homedir

@@ -7,6 +7,8 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainnam
 
 set MAGE_ROOT=$homedir$domainname;
 set MAGE_MODE=default;
+echo $MAGE_ROOT
+echo $MAGE_MODE
 echo "
 server {
         listen 80 default_server;
