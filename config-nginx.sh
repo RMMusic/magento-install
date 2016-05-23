@@ -7,23 +7,25 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainnam
 echo "
 server {
         listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
-
-        root $homedir$domainname;
-        index index.php;
-		autoindex off;
-		charset off;
-
+#        listen [::]:80 default_server ipv6only=on;
+#
+#        root $homedir$domainname;
+#        index index.php;
+#		autoindex off;
+#		charset off;
+#
         server_name $domainname www.$domainname;
-
-        location / {
-		try_files $uri $uri/ /index.php?$args;
-		}
-		
-		# deny everything but index.php
-		location ~ ^/update/(?!pub/). {
-		deny all;
-		}
+#
+#       location / {
+#		try_files $uri $uri/ /index.php?$args;
+#		}
+#		
+#		# deny everything but index.php
+#		location ~ ^/update/(?!pub/). {
+#		deny all;
+#		}
+		set $MAGE_ROOT $homedir$domainname;
+		set $MAGE_MODE developer;
 		include $homedir$domainname/nginx.conf.sample
 }
 
