@@ -24,6 +24,7 @@ server {
 		location ~ ^/update/(?!pub/). {
 		deny all;
 		}
+		include $homedir$domainname/nginx.conf.sample
 }
 
 " > /etc/nginx/sites-available/$domainname
