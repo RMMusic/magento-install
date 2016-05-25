@@ -16,8 +16,8 @@ upstream fastcgi_backend {
 server {
     listen 80;
     server_name $domainname;
-    set $MAGE_ROOT $homedir$domainname;
-    set $MAGE_MODE default;
+    set '$MAGE_ROOT' $homedir$domainname;
+    set '$MAGE_MODE' default;
     include /var/www/m.com/nginx.conf.sample;
        }
 
