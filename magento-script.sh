@@ -28,8 +28,8 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 apt-get -y install  mysql-server-5.6
 /bin/bash config-nginx.sh
 wait
-/bin/bash magento-install-composer.sh
-wait
 /bin/bash create-db.sh
+wait
+/bin/bash magento-install-composer.sh
 wait
 /bin/bash install-magento.sh
