@@ -35,7 +35,7 @@ wait
 wait
 sudo cp auth.json $homedir$domainname/bin/magento/
 wait
-sudo php $homedir$domainname/bin/magento sampledata:deloy
+sudo php $homedir$domainname/bin/magento sampledata:deploy
 wait
 sudo php $homedir$domainname/bin/magento setup:upgrade
 wait

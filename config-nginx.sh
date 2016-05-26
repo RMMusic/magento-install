@@ -16,8 +16,6 @@ upstream fastcgi_backend {
 server {
     listen 80;
     server_name $domainname;
-    set '$MAGE_ROOT' $homedir$domainname;
-    set '$MAGE_MODE' default;
     include /var/www/m.com/nginx.conf.sample;
        }
 
@@ -30,3 +28,5 @@ ln -sf /etc/nginx/sites-available/$domainname -T /etc/nginx/sites-enabled/$domai
 rm -f /etc/nginx/sites-enabled/default
 
 sudo /etc/init.d/nginx restart
+#    set '$MAGE_ROOT' $homedir$domainname;
+#    set '$MAGE_MODE' default;
