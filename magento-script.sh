@@ -25,7 +25,6 @@ apt-get -y install debconf-utils
 debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS"
 apt-get -y install  mysql-server-5.6
-/bin/bash config-nginx.sh
 wait
 /bin/bash create-db.sh
 wait
@@ -33,7 +32,9 @@ wait
 wait
 /bin/bash install-magento.sh
 wait
-sudo cp auth.json $homedir$domainname/bin/magento/
+/bin/bash config-nginx.sh
+wait
+sudo cp auth.json $homedir$domainname/var/composer_home/
 wait
 sudo php $homedir$domainname/bin/magento sampledata:deploy
 wait
