@@ -1,7 +1,7 @@
 ﻿#!/bin/bash
 sudo mkdir -p $homedir$domainname
 sudo chown -R www-data:www-data $homedir$domainname
-sudo chmod -R 755 /var/www
+sudo chmod -R 755 $homedir$domainname
 sudo echo "10.1.1.210	$domainname" >> /etc/hosts
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainname
 
@@ -29,6 +29,4 @@ ln -sf /etc/nginx/sites-available/$domainname -T /etc/nginx/sites-enabled/$domai
 
 rm -f /etc/nginx/sites-enabled/default
 
-sudo /etc/init.d/nginx stop
-wait
-sudo /etc/init.d/nginx start
+sudo /etc/init.d/nginx restart

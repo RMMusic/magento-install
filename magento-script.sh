@@ -33,3 +33,14 @@ wait
 /bin/bash magento-install-composer.sh
 wait
 /bin/bash install-magento.sh
+
+
+
+sudo php $homedir$domainname/bin/magento sampledata:deloy
+wait
+sudo php $homedir$domainname/bin/magento setup:upgrade
+wait
+sudo /etc/init.d/nginx restart
+#wait
+
+echo "DONE"
