@@ -5,10 +5,10 @@ sudo chmod -R 755 $homedir$domainname
 sudo echo "10.1.1.210	$domainname" >> /etc/hosts
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainname
 
-set MAGE_ROOT=$homedir$domainname;
-set MAGE_MODE=default;
-echo $MAGE_ROOT
-echo $MAGE_MODE
+#set MAGE_ROOT=$homedir$domainname;
+#set MAGE_MODE=default;
+#echo $MAGE_ROOT
+#echo $MAGE_MODE
 echo "
 upstream fastcgi_backend {
      server 127.0.0.1:9000;

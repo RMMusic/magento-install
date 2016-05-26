@@ -33,6 +33,8 @@ wait
 wait
 /bin/bash install-magento.sh
 wait
+sudo cp auth.json $homedir$domainname/bin/magento/
+wait
 sudo php $homedir$domainname/bin/magento sampledata:deloy
 wait
 sudo php $homedir$domainname/bin/magento setup:upgrade
