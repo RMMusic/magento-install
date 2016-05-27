@@ -1,10 +1,11 @@
 ﻿#!/bin/bash
+#importing variables from comand-line arguments and exporting them to make posible using in all scripts
 export homedir=$1
 export domainname=$2
 export dbname=$3
 export dbpass=$4
-export MAGE_ROOT=$homedir$domainname;
-export MAGE_MODE=default;
+#export MAGE_ROOT=$homedir$domainname;
+#export MAGE_MODE=default;
 echo "our home dir:"$1
 echo "domain:"$2
 echo "dbname:"$3
@@ -21,6 +22,7 @@ wait
 apt-get -y update && apt-get -y upgrade
 apt-get -y install nginx
 wait
+#installing php-modules needing to magento 2 works properly
 apt-get -y install php7.0 php7.0-soap php7.0-fpm php7.0-mysql php7.0-zip php7.0-gd php7.0-xsl php-xml php7.0-mcrypt php7.0-curl php7.0-intl php7.0-mbstring php7.0-json 
 wait
 export MYSQL_ROOT_PASS=admin123
@@ -30,12 +32,9 @@ debconf-set-selections <<< "mysql-server mysql-server/root_password_again passwo
 apt-get -y install  mysql-server-5.6
 wait
 /bin/bash create-db.sh
+#create homedir
 wait
 sudo mkdir -p $homedir$domainname
-sudo chown -R www-data:www-data $homedir$domainname
-wait
-sudo chmod -R 755 $homedir$domainname
-wait
 /bin/bash magento-install-composer.sh
 wait
 /bin/bash install-magento.sh
