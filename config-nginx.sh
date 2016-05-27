@@ -1,8 +1,8 @@
 ﻿#!/bin/bash
 sudo echo "10.1.1.210	$domainname" >> /etc/hosts
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainname
-echo 'set $MAGE_ROOT $homedir$domainname;
-set $MAGE_MODE default;' | cat - $homedir$domainname/nginx.conf.sample > temp && mv temp $homedir$domainname/nginx.conf.sample
+echo "set \$MAGE_ROOT $homedir$domainname;
+set \$MAGE_MODE default;" | cat - $homedir$domainname/nginx.conf.sample > temp && mv temp $homedir$domainname/nginx.conf.sample
 
 echo "
 upstream fastcgi_backend {
