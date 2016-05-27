@@ -1,12 +1,14 @@
 ﻿#!/bin/bash
 export homedir=$1
 export domainname=$2
-#export dbname=
-#export dbpass=
+export dbname=$3
+export dbpass=$4
 export MAGE_ROOT=$homedir$domainname;
 export MAGE_MODE=default;
 echo "our home dir:"$1
 echo "domain:"$2
+echo "dbname:"$3
+echo "dbpass:"$4
 #export homedir
 #export domainname
 #/config-nginx.sh
