@@ -34,6 +34,7 @@ wait
 #create homedir
 wait
 sudo mkdir -p $homedir$domainname
+wait
 /bin/bash magento-install-composer.sh
 wait
 /bin/bash install-magento.sh
