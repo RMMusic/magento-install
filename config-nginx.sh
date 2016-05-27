@@ -3,7 +3,6 @@ sudo echo "10.1.1.210	$domainname" >> /etc/hosts
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$domainname
 echo "set \$MAGE_ROOT $homedir$domainname;
 set \$MAGE_MODE default;" | cat - $homedir$domainname/nginx.conf.sample > temp && mv temp $homedir$domainname/nginx.conf.sample
-
 echo "
 upstream fastcgi_backend {
      server 127.0.0.1:9000;
@@ -20,9 +19,4 @@ ln -sf /etc/nginx/sites-available/$domainname -T /etc/nginx/sites-enabled/$domai
 
 rm -f /etc/nginx/sites-enabled/default
 
-sudo chown -R www-data:www-data $homedir$domainname
-wait
-sudo chmod -R 755 $homedir$domainname
-wait
-
-sudo /etc/init.d/nginx restart
+sudo /etc/init.d/nginx reload

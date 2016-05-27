@@ -2,21 +2,20 @@
 #importing variables from comand-line arguments and exporting them to make posible using in all scripts
 export homedir=$1
 export domainname=$2
-export dbname=$3
-export dbpass=$4
-#export MAGE_ROOT=$homedir$domainname;
-#export MAGE_MODE=default;
+export dbrootpass=$3
+export dbname=$4
+export dbpass=$5
+export adminlog=$6
+export adminpass=$7
+
 echo "our home dir:"$1
 echo "domain:"$2
-echo "dbname:"$3
-echo "dbpass:"$4
-#export homedir
-#export domainname
-#/config-nginx.sh
-#./install-magento.sh
-#if $homedir=="" && $domainname==""; then
-#echo "Homedir & domain name empty"
-#exit 1;
+echo "dbrootpass:"$3
+echo "dbname:"$4
+echo "dbpass:"$5
+echo "adminlog:"$6
+echo "adminpass:"$7
+#adding repository containing php7.0 and modules
 add-apt-repository -y ppa:ondrej/php
 wait
 apt-get -y update && apt-get -y upgrade
@@ -25,10 +24,10 @@ wait
 #installing php-modules needing to magento 2 works properly
 apt-get -y install php7.0 php7.0-soap php7.0-fpm php7.0-mysql php7.0-zip php7.0-gd php7.0-xsl php-xml php7.0-mcrypt php7.0-curl php7.0-intl php7.0-mbstring php7.0-json 
 wait
-export MYSQL_ROOT_PASS=admin123
+#export MYSQL_ROOT_PASS=admin123
 apt-get -y install debconf-utils
-debconf-set-selections <<< "mysql-server mysql-server/root_password password $MYSQL_ROOT_PASS"
-debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $MYSQL_ROOT_PASS"
+debconf-set-selections <<< "mysql-server mysql-server/root_password password $dbrootpass"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $dbrootpass"
 apt-get -y install  mysql-server-5.6
 wait
 /bin/bash create-db.sh
@@ -47,6 +46,11 @@ sudo php $homedir$domainname/bin/magento sampledata:deploy
 wait
 sudo php $homedir$domainname/bin/magento setup:upgrade
 wait
-sudo /etc/init.d/nginx restart
-#wait
+#grands ownage and write permissions for nginx user
+sudo chown -R www-data:www-data $homedir$domainname
+wait
+sudo chmod -R 755 $homedir$domainname
+wait
+sudo /etc/init.d/nginx reload
+wait
 echo "DONE"
