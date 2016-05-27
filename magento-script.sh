@@ -48,7 +48,9 @@ wait
 sudo php $homedir$domainname/bin/magento setup:upgrade
 wait
 #grands ownage and write permissions for nginx user
+sudo chown -R www-data:www-data $homedir*
 wait
+sudo chmod -R 755 $homedir*
 wait
 sudo /etc/init.d/nginx reload
 wait
