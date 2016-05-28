@@ -10,7 +10,7 @@ upstream fastcgi_backend {
 server {
     listen 80;
     server_name $domainname;
-    include /var/www/m.com/nginx.conf.sample;
+    include $homedir$domainname/nginx.conf.sample;
        }
 " > /etc/nginx/sites-available/$domainname
 
