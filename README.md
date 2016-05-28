@@ -12,7 +12,7 @@ tested on Ubuntu 14.04.4 LTS
 
 First you need to clone this repo:
 ```
-$ git clone git@github.com:UrkoBanzay/magento-install.git
+$ git clone https://github.com/UrkoBanzay/magento-install.git
 $ cd magento-install/
 ```
 for a successful script run you need add all this arguments to script-run command:
